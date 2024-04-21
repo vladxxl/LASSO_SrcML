@@ -1,0 +1,16 @@
+BOOLEAN_PROPERTY;//*[@type='boolean' and text()!='true' and text()!='false'] | //src:condition/src:expr
+BINARY_COMPARISON;//src:expr[src:operator[.="<" or .=">" or .="<=" or .=">=" or .="==" or .="!=" or .="|="] and src:name[.!="null"]] | //src:expr[.//src:operator[.="."] and contains(.,"equals")]
+CONSTANT_ARGUMENT;//src:call[src:argument_list/src:argument] | //src:expr[src:class/src:argument_list/src:argument]
+NULL_CHECK;//src:literal[@type="null"]/../src:operator[text()="==" or text()="!="]/.. | //src:expr[src:operator[.="==" or .="!="] and src:name[.="null"]]
+ASSIGN_CONSTANT;//*[src:init] | //*[src:operator[.="=" and following-sibling::src:literal[@type="number"]]] | //*[src:operator[.="=" and following-sibling::src:literal[@type="string"]]] | //*[src:operator[.="="] and src:name/src:operator[contains(.,".")]]
+BINARY_FLAG_CHECK;//src:operator[text()='&' or text()='|']/..
+IF_CHAIN;//src:if_stmt[count(src:if)>=2]
+EQUALS_OR_CHAIN;//src:operator[text()='||']/..
+SWITCH_LEN_CHAR;//src:condition//src:call//src:name[text()='length']/ancestor::src:switch
+SELF_COMPARISON;//src:operator[text()="==" or text()="!="]/../src:literal[@type!="null"]/..
+RETURN_COSTANT;//src:return
+NULL_ZERO_CHECK;//src:literal[@type='null']/../src:operator[text()='==' or text()='!=']/..//src:operator[text()='&&' or text()='||']/..//src:call//src:name[text()='length']/ancestor::src:expr[src:operator[text()='>']][src:literal[@type='number']]
+NULL_EMPTY_CHECK;//src:literal[@type='null']/../src:operator[text()='==' or text()='!=']/..//src:operator[text()='&&' or text()='||']/..//src:call//src:name[contains(.,'Empty') or contains(.,'empty') or contains(.,'equals') or contains(.,'Equals')]/ancestor::src:expr
+STR_STARTS;//src:call//src:name[text()='startsWith']/ancestor::src:expr
+SETTER;//src:call//src:name[contains(text(),'set')]/ancestor::src:expr
+ENUM_VALUEOF;//src:call//src:name[text()='valueOf']/ancestor::src:expr

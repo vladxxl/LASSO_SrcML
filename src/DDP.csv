@@ -1,0 +1,6 @@
+INIT;//src:decl
+IF_CONDITION;//src:if/src:condition[descendant::src:literal[@type="string" or "number"]]
+METHOD_DECL;//src:function_decl/src:name | //src:function/src:name
+ENUM_NAME;//src:enum/src:name
+CASE;//src:case
+METHOD_ARGUMENT;//src:argument
